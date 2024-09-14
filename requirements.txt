@@ -1,0 +1,6 @@
+PIL
+numpy
+opencv-python
+torch
+scipy
+facenet-pytorch
