@@ -11,7 +11,7 @@ from facenet_pytorch import InceptionResnetV1
 
 st.set_page_config(page_title = 'Image Detection',
                    layout='wide',
-                   initial_sidebar_state='collapsed')
+                   initial_sidebar_state='expanded')
 
 st.title('Add new person to the system.')
 st.caption('Please upload image to continue...')

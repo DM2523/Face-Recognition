@@ -12,7 +12,7 @@ from facenet_pytorch import InceptionResnetV1
 
 st.set_page_config(page_title = 'Image Detection',
                    layout='wide',
-                   initial_sidebar_state='collapsed')
+                   initial_sidebar_state='expanded')
 
 st.title('Welcome to Facial Recognition App')
 st.caption('Please upload image to get started.')
