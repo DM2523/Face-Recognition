@@ -147,6 +147,11 @@ def main():
             if button:
                 with st.spinner('Adding to backend...'):
                     image_arr = np.array(image)
+                    # Create the sharpening kernel 
+                    kernel = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]]) 
+  
+                    # Sharpen the image 
+                    image_arr = cv2.filter2D(image_arr, -1, kernel) 
                     pred_img,person_boxes = model.predict(image_arr)
                     pred_img_obj_out = Image.fromarray(pred_img)
                     # st.image(pred_img_obj_out)
