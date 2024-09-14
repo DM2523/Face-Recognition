@@ -123,6 +123,27 @@ def getPersonName():
     input = st.text_input("Person Name")
     return input
 
+def dynamic_resize(image, target_size):
+    
+    h, w = image.shape[:2]
+    scale = min(target_size / h, target_size / w)  # Calculate scaling factor
+
+    # Resize image while maintaining aspect ratio
+    resized_image = cv2.resize(image, (int(w * scale), int(h * scale)), interpolation=cv2.INTER_AREA)
+
+    # Create a new image of the target size with padding
+    new_image = np.zeros((target_size, target_size, 3), dtype=np.uint8)
+    
+    # Compute padding
+    h_new, w_new = resized_image.shape[:2]
+    pad_h = (target_size - h_new) // 2
+    pad_w = (target_size - w_new) // 2
+
+    # Place the resized image in the center
+    new_image[pad_h:pad_h + h_new, pad_w:pad_w + w_new] = resized_image
+
+    return new_image
+
 def main():
     Person_Name = getPersonName()
     image_file,file_details = upload_image()
@@ -151,8 +172,8 @@ def main():
                     kernel = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]]) 
   
                     # Sharpen the image 
-                    image_arr = cv2.filter2D(image_arr, -1, kernel)
-                    image_arr = cv2.resize(image_arr,(500,500),cv2.INTER_AREA)  
+                    image_arr = cv2.filter2D(image_arr, -1, kernel) 
+                    image_arr = dynamic_resize(image_arr,target_size=800) 
                     pred_img,person_boxes = model.predict(image_arr)
                     pred_img_obj_out = Image.fromarray(pred_img)
                     # st.image(pred_img_obj_out)
