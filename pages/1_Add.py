@@ -155,7 +155,7 @@ def main():
                     image_arr = cv2.resize(image_arr,(500,500),cv2.INTER_AREA)  
                     pred_img,person_boxes = model.predict(image_arr)
                     pred_img_obj_out = Image.fromarray(pred_img)
-                    st.image(pred_img_obj_out)
+                    # st.image(pred_img_obj_out)
                     if(len(person_boxes)!=0):
                         prediction = True
                         person_list = getROIs(person_boxes,image_arr)
