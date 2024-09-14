@@ -1,7 +1,9 @@
 Pillow
-numpy
-opencv-python
 torch
 scipy
 facenet-pytorch
-pyyaml
+numpy==1.26.4
+pyyaml==6.0.1
+streamlit==1.38.0
+opencv-python-headless
+Pillow==10.1.0
