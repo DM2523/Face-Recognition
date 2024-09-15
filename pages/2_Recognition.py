@@ -167,6 +167,7 @@ def main():
             if button:
                 with st.spinner('Recognising...'):
                     image_arr = np.array(image)
+                    image_arr_copy = image_arr.copy()
                     # Create the sharpening kernel 
                     kernel = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]]) 
   
