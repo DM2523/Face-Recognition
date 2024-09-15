@@ -174,7 +174,7 @@ def main():
                     # Sharpen the image 
                     # image_arr = cv2.filter2D(image_arr, -1, kernel)
                     image_arr = dynamic_resize(image_arr,target_size=800)
-                    pred_img,person_boxes = model.predict(image_arr)
+                    pred_img,person_boxes = model.predict(image_arr_copy)
                     pred_img_obj = Image.fromarray(pred_img)
                     # st.image(pred_img_obj)
                     if(len(person_boxes)!=0):
