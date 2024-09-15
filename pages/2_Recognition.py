@@ -167,13 +167,13 @@ def main():
             if button:
                 with st.spinner('Recognising...'):
                     image_arr = np.array(image)
-                    image_arr_copy = image_arr.copy()
                     # Create the sharpening kernel 
                     kernel = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]]) 
   
                     # Sharpen the image 
                     # image_arr = cv2.filter2D(image_arr, -1, kernel)
                     image_arr = dynamic_resize(image_arr,target_size=800)
+                    image_arr_copy = image_arr.copy()
                     pred_img,person_boxes = model.predict(image_arr)
                     pred_img_obj = Image.fromarray(pred_img)
                     # st.image(pred_img_obj)
