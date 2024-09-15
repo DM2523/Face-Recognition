@@ -104,7 +104,7 @@ def get_embedding(image):
     return embedding.squeeze().cpu().numpy() 
 
 #Get recognition
-def recognize_face(input_image, embeddings, threshold=0.05):
+def recognize_face(input_image, embeddings, threshold=0.1):
     query_embedding = get_embedding(input_image)
     
     min_distance = float('inf')
